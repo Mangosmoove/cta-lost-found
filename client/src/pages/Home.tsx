@@ -2,17 +2,7 @@ import { Link } from "react-router";
 import { HandHeart, ListChecks, Search } from "lucide-react";
 import Card from "../components/Card";
 import ChicagoStar from "../components/ChicagoStar";
-
-const LINE_STRIPES = [
-  "bg-[#c0392b]", // red
-  "bg-[#3b8fd4]", // blue
-  "bg-[#6f4e37]", // brown
-  "bg-[#4a9a52]", // green
-  "bg-[#e67e22]", // orange
-  "bg-[#d96aa7]", // pink
-  "bg-[#5b3a94]", // purple
-  "bg-[#f4d452]", // yellow
-];
+import LineStripe from "../components/LineStripe";
 
 const Home = () => {
   return (
@@ -30,9 +20,7 @@ const Home = () => {
         </p>
 
         <div className="mt-6 flex h-2 w-full overflow-hidden rounded-full">
-          {LINE_STRIPES.map((color) => (
-            <div key={color} className={`flex-1 ${color}`} />
-          ))}
+          <LineStripe />
         </div>
       </section>
 
@@ -57,7 +45,7 @@ const Home = () => {
       {/* Secondary action */}
       <Link
         to="/activity"
-        className="flex items-center justify-center gap-2 rounded-full border-2 border-[#12264a] bg-white py-3 text-lg font-bold"
+        className="flex items-center justify-center gap-2 rounded-full border-2 border-navy bg-white py-3 text-lg font-bold"
       >
         <ListChecks size={22} />
         My activity

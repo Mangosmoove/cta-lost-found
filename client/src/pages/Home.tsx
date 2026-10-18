@@ -1,0 +1,69 @@
+import { Link } from "react-router";
+import { HandHeart, ListChecks, Search } from "lucide-react";
+import Card from "../components/Card";
+import ChicagoStar from "../components/ChicagoStar";
+
+const LINE_STRIPES = [
+  "bg-[#c0392b]", // red
+  "bg-[#3b8fd4]", // blue
+  "bg-[#6f4e37]", // brown
+  "bg-[#4a9a52]", // green
+  "bg-[#e67e22]", // orange
+  "bg-[#d96aa7]", // pink
+  "bg-[#5b3a94]", // purple
+  "bg-[#f4d452]", // yellow
+];
+
+const Home = () => {
+  return (
+    <div className="grid grid-cols-1 gap-6">
+      <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#3f86b8] via-[#1b3a66] to-[#12264a] p-6 text-white shadow-lg">
+        <ChicagoStar className="absolute -right-4 -top-4 h-24 w-24 text-white/10" />
+        <ChicagoStar className="absolute -bottom-6 right-16 h-16 w-16 text-white/10" />
+
+        <h2 className="text-sm font-semibold tracking-widest text-white/80 uppercase">
+          Chicago Transit Authority
+        </h2>
+        <h1 className="mt-2 text-5xl font-extrabold">Lost &amp; Found</h1>
+        <p className="mt-4 text-lg text-white/90">
+          Help a fellow rider, or get your stuff back.
+        </p>
+
+        <div className="mt-6 flex h-2 w-full overflow-hidden rounded-full">
+          {LINE_STRIPES.map((color) => (
+            <div key={color} className={`flex-1 ${color}`} />
+          ))}
+        </div>
+      </section>
+
+      {/* two action cards */}
+      <Card
+        to="/found"
+        title="I found something"
+        subtitle="Log it, then hand it in at a station"
+        icon={<HandHeart size={30} />}
+        cardClass="bg-sky text-navy shadow-[0_6px_0_0_#12264a,0_14px_24px_-6px_rgba(0,0,0,0.25)]"
+        iconBoxClass="bg-white/70"
+      />
+      <Card
+        to="/lost"
+        title="I lost something"
+        subtitle="We'll tell you if it's turned in"
+        icon={<Search size={30} />}
+        cardClass="bg-navy text-white shadow-[0_6px_0_0_#0a1630,0_14px_24px_-6px_rgba(0,0,0,0.3)]"
+        iconBoxClass="bg-white/15"
+      />
+
+      {/* Secondary action */}
+      <Link
+        to="/activity"
+        className="flex items-center justify-center gap-2 rounded-full border-2 border-[#12264a] bg-white py-3 text-lg font-bold"
+      >
+        <ListChecks size={22} />
+        My activity
+      </Link>
+    </div>
+  );
+};
+
+export default Home;

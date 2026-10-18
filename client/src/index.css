@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chicago-star: #e4002b;
+  --color-navy: #12264a;
+  --color-sky: #62b3e0;
+  --color-cream: #f5f3ee;
+}

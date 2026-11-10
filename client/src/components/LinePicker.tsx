@@ -1,16 +1,24 @@
-import { LINES } from "../data/train-info";
+import { LINES } from "../utils/train-info";
 
 type LinePickerProps = {
+  name?: string; // must be unique per picker on a page
   multiple?: boolean;
   value: string[];
   onChange: (value: string[]) => void;
 };
 
-const LinePicker = ({ multiple = false, value, onChange }: LinePickerProps) => {
-  const toggle = (name: string) => {
-    if (!multiple) return onChange([name]);
+const LinePicker = ({
+  name = "line",
+  multiple = false,
+  value,
+  onChange,
+}: LinePickerProps) => {
+  const toggle = (lineName: string) => {
+    if (!multiple) return onChange([lineName]);
     onChange(
-      value.includes(name) ? value.filter((n) => n !== name) : [...value, name],
+      value.includes(lineName)
+        ? value.filter((n) => n !== lineName)
+        : [...value, lineName],
     );
   };
 
@@ -20,7 +28,7 @@ const LinePicker = ({ multiple = false, value, onChange }: LinePickerProps) => {
         <label key={line.name} className="cursor-pointer">
           <input
             type={multiple ? "checkbox" : "radio"}
-            name="line"
+            name={name}
             value={line.name}
             required={!multiple}
             checked={value.includes(line.name)}

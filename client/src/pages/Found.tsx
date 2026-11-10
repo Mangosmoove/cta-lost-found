@@ -1,28 +1,43 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
-import { STATIONS } from "../data/train-info";
 import LineStripe from "../components/LineStripe";
 import LinePicker from "../components/LinePicker";
+import StationSelect from "../components/StationSelect";
 import CategorySelect from "../components/CategorySelect";
+import ColorSelect from "../components/ColorSelect";
+import DateTimeField from "../components/DateTimeField";
 import PhotoUpload from "../components/PhotoUpload";
+import { toLocalInput } from "../utils/datetime";
 import { fieldClass, hintClass, labelClass } from "../components/FormStyles";
 
 const Found = () => {
   const [category, setCategory] = useState("Wallet/ID");
   const [color, setColor] = useState("");
+  const [color2, setColor2] = useState("");
   const [lineName, setLineName] = useState("");
-  const [station, setStation] = useState("");
+  const [foundStation, setFoundStation] = useState("");
+  const [foundAt, setFoundAt] = useState(() => toLocalInput(new Date()));
+  const [handInLine, setHandInLine] = useState("");
+  const [handInStation, setHandInStation] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState<File | null>(null);
-
-  const stations = lineName ? STATIONS[lineName] : [];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // implement: send to the API, then navigate to my activity
-    console.log({ category, color, lineName, station, description, photo });
+    console.log({
+      category,
+      colors: [color, color2].filter(Boolean),
+      line: lineName,
+      foundStation,
+      foundAt,
+      handInLine,
+      handInStation,
+      description,
+      photo,
+    });
   };
 
   return (
@@ -41,53 +56,91 @@ const Found = () => {
       <form onSubmit={handleSubmit} className="grid gap-6">
         <CategorySelect value={category} onChange={setCategory} />
 
-        <div>
-          <label htmlFor="color" className={labelClass}>
-            Item color *
-          </label>
-          <input
-            id="color"
-            type="text"
-            required
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-            placeholder="e.g. Black"
-            className={fieldClass}
-          />
-        </div>
+        <ColorSelect
+          id="color"
+          label="Main color *"
+          value={color}
+          onChange={(c) => {
+            setColor(c);
+            if (c === "Multicolor") setColor2("");
+          }}
+          required
+        />
 
-        {/* train line item was found */}
+        {color && color !== "Multicolor" && (
+          <ColorSelect
+            id="color2"
+            label="Second color (optional)"
+            value={color2}
+            onChange={setColor2}
+            exclude={color}
+          />
+        )}
+
+        {/* line it was found on */}
         <fieldset>
-          <legend className={labelClass}>Train Line it was found *</legend>
+          <legend className={labelClass}>Train line it was found on *</legend>
           <LinePicker
+            name="foundLine"
             value={lineName ? [lineName] : []}
             onChange={([name]) => {
               setLineName(name);
-              setStation(STATIONS[name][0]); // default to the first station
+              setFoundStation("");
             }}
           />
         </fieldset>
 
-        {/* return station */}
-        <div>
-          <label htmlFor="station" className={labelClass}>
-            Station where you'll hand it in *
-          </label>
-          <select
-            id="station"
+        <StationSelect
+          id="foundStation"
+          label="Stop where you found it (optional)"
+          line={lineName}
+          value={foundStation}
+          onChange={setFoundStation}
+        />
+
+        <DateTimeField
+          id="foundAt"
+          label="When did you find it? *"
+          value={foundAt}
+          onChange={setFoundAt}
+          max={toLocalInput(new Date())}
+          required
+        />
+
+        {/* hand-in can be any station on any line */}
+        <fieldset className="grid gap-4">
+          <legend className={labelClass}>Where will you hand it in? *</legend>
+          <LinePicker
+            name="handInLine"
+            value={handInLine ? [handInLine] : []}
+            onChange={([name]) => {
+              setHandInLine(name);
+              setHandInStation("");
+            }}
+          />
+          <StationSelect
+            id="handInStation"
+            label="Station *"
+            line={handInLine}
+            value={handInStation}
+            onChange={setHandInStation}
             required
-            disabled={!lineName}
-            value={station}
-            onChange={(e) => setStation(e.target.value)}
-            className={fieldClass}
-          >
-            {!lineName && <option value="">Choose a line above first</option>}
-            {stations.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-          {!lineName && <p className={hintClass}>Pick a line first.</p>}
-        </div>
+          />
+          {foundStation &&
+            !(handInLine === lineName && handInStation === foundStation) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setHandInLine(lineName);
+                  setHandInStation(foundStation);
+                }}
+                className="justify-self-start rounded-full border-2 border-navy px-4 py-1.5 font-bold"
+              >
+                Same as where I found it
+              </button>
+            )}
+          <p className={hintClass}>You can hand it in at any CTA station.</p>
+        </fieldset>
 
         <div>
           <label htmlFor="description" className={labelClass}>
@@ -98,7 +151,7 @@ const Found = () => {
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Where you found it, what it looks like"
+            placeholder="What it looks like, any brand or distinctive features"
             className={fieldClass}
           />
         </div>

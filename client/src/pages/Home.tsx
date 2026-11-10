@@ -16,7 +16,7 @@ const Home = () => {
         </h2>
         <h1 className="mt-2 text-5xl font-extrabold">Lost &amp; Found</h1>
         <p className="mt-4 text-lg text-white/90">
-          Help a fellow rider, or get your stuff back.
+          Help a fellow rider, or get your items back.
         </p>
 
         <div className="mt-6 flex h-2 w-full overflow-hidden rounded-full">

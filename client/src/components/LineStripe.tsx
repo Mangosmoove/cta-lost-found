@@ -1,4 +1,4 @@
-import { LINES } from "../data/train-info";
+import { LINES } from "../utils/train-info";
 
 const LineStripe = () => (
   <>

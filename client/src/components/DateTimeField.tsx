@@ -31,7 +31,7 @@ const DateTimeField = ({
       max={max}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={fieldClass}
+      className={`${fieldClass} ${value ? "" : "text-gray-400"}`}
     />
   </div>
 );

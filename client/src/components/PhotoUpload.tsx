@@ -25,13 +25,13 @@ const PhotoUpload = ({
         Photo (optional)
       </label>
 
-      <div className="flex gap-3 rounded-2xl border-2 border-[#f0d28a] bg-[#feecc7] p-4 text-[#7a4a00]">
+      <div className="flex gap-3 rounded-2xl border-2 border-warning-border bg-warning-bg p-4 text-warning-text">
         <ShieldAlert size={20} className="mt-0.5 shrink-0" aria-hidden />
         <p>Don't include IDs, cards, or personal documents in the photo.</p>
       </div>
 
       {showHelperText && (
-        <p className="rounded-2xl bg-[#e3eff8] px-4 py-3 text-[#1b3a66]">
+        <p className="rounded-2xl bg-info-bg px-4 py-3 text-info-text">
           For wallets and IDs, we suggest skipping the photo entirely.
         </p>
       )}
@@ -53,7 +53,7 @@ const PhotoUpload = ({
       </label>
 
       {file ? (
-        <div className="flex items-center gap-4 rounded-2xl border-2 border-[#e0dcd0] bg-white px-4 py-3">
+        <div className="flex items-center gap-4 rounded-2xl border-2 border-form-border bg-white px-4 py-3">
           <p className="min-w-0 flex-1 truncate">{file.name}</p>
           <button
             type="button"
@@ -72,7 +72,7 @@ const PhotoUpload = ({
             accept="image/*"
             disabled={!confirmed}
             onChange={(e) => updateFile(e.target.files?.[0] ?? null)}
-            className={`${fieldClass} file:mr-3 file:rounded-lg file:border-0 file:bg-[#e3eff8] file:px-3 file:py-2 file:font-bold`}
+            className={`${fieldClass} file:mr-3 file:rounded-lg file:border-0 file:bg-info file:px-3 file:py-2 file:font-bold`}
           />
           {!confirmed && (
             <p className="text-gray-500">

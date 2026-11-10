@@ -3,6 +3,7 @@
 @theme {
   --color-chicago-star: #e4002b;
   --color-navy: #12264a;
+  --color-dark-navy: #0a1630;
   --color-sky: #62b3e0;
   --color-cream: #f5f3ee;
   --color-red-line: #c60c30;
@@ -13,4 +14,10 @@
   --color-pink-line: #e27ea6;
   --color-purple-line: #522398;
   --color-yellow-line: #f9e300;
+  --color-form-border: #e0dcd0;
+  --color-info-bg: #e3eff8;
+  --color-info-text: #1b3a66;
+  --color-warning-bg: #feecc7;
+  --color-warning-border: #f0d28a;
+  --color-warning-text: #7a4a00;
 }

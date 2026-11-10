@@ -7,7 +7,7 @@ import LineStripe from "../components/LineStripe";
 const Home = () => {
   return (
     <div className="grid grid-cols-1 gap-6">
-      <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#3f86b8] via-[#1b3a66] to-[#12264a] p-6 text-white shadow-lg">
+      <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#3f86b8] via-info-text to-navy p-6 text-white shadow-lg">
         <ChicagoStar className="absolute -right-4 -top-4 h-24 w-24 text-white/10" />
         <ChicagoStar className="absolute -bottom-6 right-16 h-16 w-16 text-white/10" />
 
@@ -30,7 +30,7 @@ const Home = () => {
         title="I found something"
         subtitle="Log it, then hand it in at a station"
         icon={<HandHeart size={30} />}
-        cardClass="bg-sky text-navy shadow-[0_6px_0_0_#12264a,0_14px_24px_-6px_rgba(0,0,0,0.25)]"
+        cardClass="bg-sky text-navy shadow-[0_6px_0_0_var(--color-navy)],0_14px_24px_-6px_rgba(0,0,0,0.25)]"
         iconBoxClass="bg-white/70"
       />
       <Card
@@ -38,7 +38,7 @@ const Home = () => {
         title="I lost something"
         subtitle="We'll tell you if it's turned in"
         icon={<Search size={30} />}
-        cardClass="bg-navy text-white shadow-[0_6px_0_0_#0a1630,0_14px_24px_-6px_rgba(0,0,0,0.3)]"
+        cardClass="bg-navy text-white shadow-[0_6px_0_0_var(--color-dark-navy)],0_14px_24px_-6px_rgba(0,0,0,0.3)]"
         iconBoxClass="bg-white/15"
       />
 

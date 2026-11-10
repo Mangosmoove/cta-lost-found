@@ -22,7 +22,7 @@ const Card = ({
   return (
     <Link
       to={to}
-      className={`flex w-full items-center gap-4 rounded-3xl p-5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#12264a] ${cardClass}`}
+      className={`flex w-full items-center gap-4 rounded-3xl p-5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy ${cardClass}`}
     >
       <span
         className={`flex size-14 shrink-0 items-center justify-center rounded-2xl ${iconBoxClass}`}

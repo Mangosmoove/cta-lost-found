@@ -35,7 +35,7 @@ const LinePicker = ({
             onChange={() => toggle(line.name)}
             className="peer sr-only"
           />
-          <span className="flex items-center gap-3 rounded-2xl border-2 border-[#e0dcd0] bg-white px-4 py-3 peer-checked:border-navy peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-navy">
+          <span className="flex items-center gap-3 rounded-2xl border-2 border-form-border bg-white px-4 py-3 peer-checked:border-navy peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-navy">
             <span className={`size-3 rounded-full ${line.color}`} />
             {line.name}
           </span>

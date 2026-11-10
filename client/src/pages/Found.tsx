@@ -163,7 +163,7 @@ const Found = () => {
 
         <button
           type="submit"
-          className="rounded-full bg-navy py-4 text-base font-bold text-white shadow-[0_4px_0_0_#0a1630] active:translate-y-0.5 active:shadow-none"
+          className="rounded-full bg-navy py-4 text-base font-bold text-white shadow-[0_4px_0_0_var(--color-dark-navy)] active:translate-y-0.5 active:shadow-none"
         >
           Submit and get QR code
         </button>

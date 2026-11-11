@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Found from "./pages/Found";
 import Lost from "./pages/Lost";
+import Activity from "./pages/Activity";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/found" element={<Found />} />
         <Route path="/lost" element={<Lost />} />
+        <Route path="/activity" element={<Activity />} />
       </Route>
     </Routes>
   );

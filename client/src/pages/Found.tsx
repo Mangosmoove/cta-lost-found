@@ -10,6 +10,7 @@ import DateTimeField from "../components/DateTimeField";
 import PhotoUpload from "../components/PhotoUpload";
 import { toLocalInput } from "../utils/datetime";
 import { fieldClass, hintClass, labelClass } from "../components/FormStyles";
+import PageHeader from "../components/PageHeader";
 
 const Found = () => {
   const [category, setCategory] = useState("Wallet/ID");
@@ -42,16 +43,7 @@ const Found = () => {
 
   return (
     <div>
-      <div className="mb-3 flex items-center gap-4">
-        <Link to="/" aria-label="Back to home" className="p-1">
-          <ArrowLeft size={22} />
-        </Link>
-        <h1 className="text-xl font-bold">I found something</h1>
-      </div>
-
-      <div className="mb-6 flex h-1.5 w-full overflow-hidden rounded-full">
-        <LineStripe />
-      </div>
+      <PageHeader title="I found something" />
 
       <form onSubmit={handleSubmit} className="grid gap-6">
         <CategorySelect value={category} onChange={setCategory} />

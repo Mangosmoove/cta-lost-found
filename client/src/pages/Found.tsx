@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { ArrowLeft } from "lucide-react";
-import LineStripe from "../components/LineStripe";
 import LinePicker from "../components/LinePicker";
 import StationSelect from "../components/StationSelect";
 import CategorySelect from "../components/CategorySelect";

@@ -1,29 +1,7 @@
 import PageHeader from "../components/PageHeader";
 import ActivityRow from "../components/ActivityRow";
-import type { FoundReport, LostReport } from "../types/activity";
 import { FINDER_DISPLAY, OWNER_DISPLAY } from "../utils/status-display";
-
-const lostReports: LostReport[] = [];
-// const lostReports: LostReport[] = [{
-//         id: "2",
-//       category: "Accessory",
-//       color: "Purple",
-//       lines: ["Blue", "Red"],
-//       station: "O'Hare",
-//       status: "open",
-// }];
-
-// const foundItems: FoundReport[] = [
-//   {
-//     id: "1",
-//     category: "Wallet/ID",
-//     color: "Black",
-//     line: "Red",
-//     station: "Howard",
-//     status: "returned",
-//   },
-// ];
-const foundItems: FoundReport[] = [];
+import { lostReports, foundItems } from "../utils/mock-data";
 
 const EmptyState = ({ children }: { children: string }) => (
   <p className="rounded-3xl border-2 border-dashed border-form-border px-4 py-10 text-center text-gray-500">

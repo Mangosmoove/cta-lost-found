@@ -7,7 +7,8 @@ export type FoundReport = {
   id: string;
   category: string;
   color: string;
-  line: string;
+  line: string; // line it was found on
+  handInLine: string; // line user will turn item into
   station: string; // hand-in station
   status: FoundStatus;
 };

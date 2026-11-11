@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Found from "./pages/Found";
 import Lost from "./pages/Lost";
 import Activity from "./pages/Activity";
+import FoundDetail from "./pages/FoundDetail";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/found" element={<Found />} />
         <Route path="/lost" element={<Lost />} />
         <Route path="/activity" element={<Activity />} />
+        <Route path="/activity/found/:id" element={<FoundDetail />} />
       </Route>
     </Routes>
   );

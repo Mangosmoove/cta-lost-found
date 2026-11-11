@@ -8,6 +8,8 @@ import PhotoUpload from "../components/PhotoUpload";
 import { toLocalInput } from "../utils/datetime";
 import { fieldClass, hintClass, labelClass } from "../components/FormStyles";
 import PageHeader from "../components/PageHeader";
+import { useNavigate } from "react-router";
+import { addFoundItem } from "../utils/mock-data";
 
 const Found = () => {
   const [category, setCategory] = useState("Wallet/ID");
@@ -18,23 +20,21 @@ const Found = () => {
   const [handInLine, setHandInLine] = useState("");
   const [handInStation, setHandInStation] = useState("");
   const [description, setDescription] = useState("");
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photo, setPhoto] = useState<File | null>(null); // will handle submission later
+  const navigate = useNavigate();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // implement: send to the API, then navigate to my activity
-    console.log({
+    // TODO: replace addFoundItem with the API call, also need to figure out how to handle picture
+    const id = addFoundItem({
       category,
       color,
       line: lineName,
-      foundStation,
-      foundAt,
       handInLine,
-      handInStation,
-      description,
-      photo,
+      station: handInStation,
     });
+    navigate(`/activity/found/${id}`, { replace: true });
   };
 
   return (

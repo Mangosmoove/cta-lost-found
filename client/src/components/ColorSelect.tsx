@@ -7,7 +7,6 @@ type ColorSelectProps = {
   value: string;
   onChange: (value: string) => void;
   required?: boolean;
-  exclude?: string; // hide a color already chosen in another picker
 };
 
 const ColorSelect = ({
@@ -16,7 +15,6 @@ const ColorSelect = ({
   value,
   onChange,
   required = false,
-  exclude,
 }: ColorSelectProps) => (
   <div>
     <label htmlFor={id} className={labelClass}>
@@ -29,8 +27,8 @@ const ColorSelect = ({
       onChange={(e) => onChange(e.target.value)}
       className={fieldClass}
     >
-      <option value="">{required ? "Choose a color" : "None"}</option>
-      {COLORS.filter((c) => c !== exclude).map((c) => (
+      <option value="">Choose a color</option>
+      {COLORS.map((c) => (
         <option key={c}>{c}</option>
       ))}
     </select>

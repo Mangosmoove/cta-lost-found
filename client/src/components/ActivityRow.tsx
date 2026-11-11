@@ -7,7 +7,7 @@ import type { StatusDisplay } from "../utils/status-display";
 type ActivityRowProps = {
   to?: string; // for detailed views, e.g., QR code
   category: string;
-  colors: string[];
+  color: string;
   lines: string[];
   place: string;
   display: StatusDisplay;
@@ -30,7 +30,7 @@ const LineDots = ({ lines }: { lines: string[] }) => (
 const ActivityRow = ({
   to,
   category,
-  colors,
+  color,
   lines,
   place,
   display,
@@ -39,7 +39,7 @@ const ActivityRow = ({
     <>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-lg font-bold">
-          {category} · {colors.join(" & ").toLowerCase()}
+          {category} · {color.toLowerCase()}
         </span>
         <span className="mt-1 flex items-center gap-2 text-gray-500">
           <LineDots lines={lines} />

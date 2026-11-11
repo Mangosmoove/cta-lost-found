@@ -14,7 +14,6 @@ const errorClass = "mt-2 font-bold text-red-line";
 const Lost = () => {
   const [category, setCategory] = useState("Wallet/ID");
   const [color, setColor] = useState("");
-  const [color2, setColor2] = useState("");
   const [lines, setLines] = useState<string[]>([]);
   const [lostLine, setLostLine] = useState(""); // line they think they lost it on
   const [lostStation, setLostStation] = useState("");
@@ -56,7 +55,7 @@ const Lost = () => {
     // later implement api fun stuff
     console.log({
       category,
-      colors: [color, color2].filter(Boolean),
+      color,
       lines,
       lost_line: lostLine || null,
       lost_station: lostStation || null,
@@ -82,20 +81,9 @@ const Lost = () => {
           value={color}
           onChange={(c) => {
             setColor(c);
-            if (c === "Multicolor") setColor2("");
           }}
           required
         />
-
-        {color && color !== "Multicolor" && (
-          <ColorSelect
-            id="color2"
-            label="Second color (optional)"
-            value={color2}
-            onChange={setColor2}
-            exclude={color}
-          />
-        )}
 
         {/* every line they rode */}
         <fieldset>

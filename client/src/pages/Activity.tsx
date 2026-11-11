@@ -7,7 +7,7 @@ const lostReports: LostReport[] = [];
 // const lostReports: LostReport[] = [{
 //         id: "2",
 //       category: "Accessory",
-//       colors: ["Purple"],
+//       color: "Purple",
 //       lines: ["Blue", "Red"],
 //       station: "O'Hare",
 //       status: "open",
@@ -17,7 +17,7 @@ const lostReports: LostReport[] = [];
 //   {
 //     id: "1",
 //     category: "Wallet/ID",
-//     colors: ["Black"],
+//     color: "Black",
 //     line: "Red",
 //     station: "Howard",
 //     status: "returned",
@@ -51,7 +51,7 @@ const Activity = () => {
                       : undefined
                   }
                   category={r.category}
-                  colors={r.colors}
+                  color={r.color}
                   lines={r.lines}
                   place={r.station ?? r.lines.join(", ")}
                   display={OWNER_DISPLAY[r.status]}
@@ -77,7 +77,7 @@ const Activity = () => {
                       : undefined
                   }
                   category={i.category}
-                  colors={i.colors}
+                  color={i.color}
                   lines={[i.line]}
                   place={i.station}
                   display={FINDER_DISPLAY[i.status]}

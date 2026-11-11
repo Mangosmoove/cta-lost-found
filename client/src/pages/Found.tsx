@@ -12,7 +12,6 @@ import PageHeader from "../components/PageHeader";
 const Found = () => {
   const [category, setCategory] = useState("Wallet/ID");
   const [color, setColor] = useState("");
-  const [color2, setColor2] = useState("");
   const [lineName, setLineName] = useState("");
   const [foundStation, setFoundStation] = useState("");
   const [foundAt, setFoundAt] = useState(() => toLocalInput(new Date()));
@@ -27,7 +26,7 @@ const Found = () => {
     // implement: send to the API, then navigate to my activity
     console.log({
       category,
-      colors: [color, color2].filter(Boolean),
+      color,
       line: lineName,
       foundStation,
       foundAt,
@@ -51,20 +50,9 @@ const Found = () => {
           value={color}
           onChange={(c) => {
             setColor(c);
-            if (c === "Multicolor") setColor2("");
           }}
           required
         />
-
-        {color && color !== "Multicolor" && (
-          <ColorSelect
-            id="color2"
-            label="Second color (optional)"
-            value={color2}
-            onChange={setColor2}
-            exclude={color}
-          />
-        )}
 
         {/* line it was found on */}
         <fieldset>
